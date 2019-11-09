@@ -1,2 +1,1 @@
 # PracticeCTF
-# PracticeCTF
