@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
     res.sendFile(path.join(__dirname+'/pctf.html'));
   });
 
-router.post('/challenge', function(req, res) {
+router.get('/challenge', function(req, res) {
     res.sendFile(path.join(__dirname+'/challenge.html'));
   });
   

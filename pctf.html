@@ -12,7 +12,6 @@
         color: white;
         font-family: 'Roboto Mono', monospace;
         font-weight: 500;
-        user-select: none;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -21,7 +20,7 @@
         min-height: 90vh;
     }
     #body{
-        display: inline-block;
+        display: inline-flex;
         flex-direction: column;
         justify-content: center;
         align-items: center; 
@@ -95,9 +94,13 @@
         z-index: 2;
         text-align: center;
     }
-    #c1{
+    input{
         margin-top: 20px;
         color: black;
+        background-color: white;
+        border-radius: 5px;
+        border: none;
+        padding: 10px;
     }
     #text{
         font-size: 50px;
@@ -110,6 +113,7 @@
     }
     h1{
         padding-left: 20px;
+        font-weight: 500;
     }
 
     </style>
@@ -117,9 +121,6 @@
         $(document).ready(function() {
             $('.onClick').click(function() {
                 $("#overlay").css({"display":"block"});
-            });
-            $('#c1').click(function() {
-                event.stopPropagation();
             });
             $('#overlay').click(function() {
                 $("#overlay").css({"display":"none"});
@@ -142,6 +143,58 @@
             $('#overlay4').click(function() {
                 $("#overlay4").css({"display":"none"});
             });
+
+            $('input').click(function() {
+                event.stopPropagation();
+            });
+            $('p').click(function(){
+                event.stopPropagation();
+            });
+
+            $('#c1').keypress(function(event){
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if(keycode == '13'){
+                    if ($('#c1').val() == 'donut'){
+                        alert('Correct Flag!');
+                    }
+                    else{
+                        alert('lmao Wrong Flag');
+                    }
+                }
+            });
+            $('#c2').keypress(function(event){
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if(keycode == '13'){
+                    if ($('#c2').val() == '32768'){
+                        alert('Correct Flag!');
+                    }
+                    else{
+                        alert('lmao Wrong Flag');
+                    }
+                }
+            });
+            $('#c3').keypress(function(event){
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if(keycode == '13'){
+                    if ($('#c3').val() == '178573'){
+                        alert('Correct Flag!');
+                    }
+                    else{
+                        alert('lmao Wrong Flag');
+                    }
+                }
+            });
+            $('#c4').keypress(function(event){
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if(keycode == '13'){
+                    if ($('#c4').val() == '#FFFFFF'){
+                        alert('Correct Flag!');
+                    }
+                    else{
+                        alert('lmao Wrong Flag');
+                    }
+                }
+            });
         });
     </script>
     <body>
@@ -161,20 +214,20 @@
             </div>
         </div>
         <div id="overlay" style="display:none">
-            <div id="text">Decrypt 5A4739756458513D</div>
-            <input class="d1" id="c1" value="answer">
+            <p id="text">Decrypt 5A4739756458513D</p>
+            <input class="d1" id="c1" placeholder="Flag">
         </div>
         <div id="overlay2" style="display:none">
-            <div id="text">How many bits are in 4096 Bytes?</div>
-            <input class="d1" id="c1" value="answer">
+            <p id="text">How many bits are in 4096 Bytes?</p>
+            <input class="d2" id="c2" placeholder="Flag">
         </div>
         <div id="overlay3" style="display:none">
-            <div id="text"></div>
-            <input class="d1" id="c1" value="answer">
+            <p id="text">check out http://db6735a5.ngrok.io/challenge </p>
+            <input class="d3" id="c3" placeholder="Flag">
         </div>
         <div id="overlay4" style="display:none">
-            <div id="text">challenge lol2</div>
-            <input class="d1" id="c1" value="answer">
+            <p id="text">What is the hex value of an RGB white pixel</p>
+            <input class="d4" id="c4" placeholder="Flag">
         </div>
              
     </body>
