@@ -9,6 +9,13 @@
   "author": "isebasus <isebasus@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "mongodb": "^3.3.4",
+    "path": "^0.12.7",
+    "pug": "^2.0.4"
   }
 }

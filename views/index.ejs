@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/styesheets/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <title>PCTF</title>
+    </head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700&display=swap');
+
+    * {
+        color: white;
+        font-family: 'Roboto Mono', monospace;
+        font-weight: 500;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+        background-color: #141414;
+        min-height: 90vh;
+    }
+    #body{
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+    }
+
+    div{
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+    input[type=submit]{
+        background-color: white;
+        color: #141414;
+        border-radius: 5px;
+        border: 0px;
+        padding: 1em 2em;
+        font-weight: 700;
+        user-select: none;
+        text-decoration: none;
+        animation: show 1s infinite;
+        cursor: pointer;
+        letter-spacing: 0.2vw;
+        vertical-align: middle;
+        font-family: 'Roboto Mono', monospace;
+        transition: transform .1s ease; 
+    }
+    #overlay, #overlay2, #overlay3, #overlay4{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 2;
+        text-align: center;
+    }
+
+    input{
+        margin-top: 20px;
+        color: black;
+        background-color: white;
+        border-radius: 5px;
+        border: none;
+        padding: 10px;
+    }
+    #text{
+        font-size: 50px;
+        color: white;    
+        }
+    input[type=submit]:hover{
+        -webkit-transform: scale(1.015);
+        -ms-transform: scale(1.015);
+        transform: scale(1.015);
+    }
+    h1{
+        padding-left: 20px;
+        font-weight: 500;
+    }
+
+    </style>
+    <script>
+        var style = "<%= style %>";
+        console.log(style);
+
+        $(document).ready(function() {
+            $("#overlay").css("display", style);
+        });
+    </script>
+    <body>
+        <h1>practice CTF</h1>
+        <div id="body">
+            <div>
+                <form action="/superhardchallenge" method="GET">
+                    <input type="submit" class="onClick4" value="challenge 1">
+                </form>
+            </div>
+            <div>
+                <form action="/challengebad" method="GET">
+                    <input type="submit" class="onClick4" value="challenge 2">
+                </form>
+            </div>
+            <div>
+                <form action="/gudChallenge" method="GET">
+                    <input type="submit" class="onClick4" value="challenge 3">
+                </form>
+            </div>
+            <div>
+                <form action="/badChallenge" method="GET">
+                    <input type="submit" class="onClick4" value="challenge 4">
+                </form>
+            </div>
+        </div>
+        <div id="overlay" style="display: none">
+            <p id="text"><%= challenge %></p>
+            <form action="/badAnswer" method="POST">
+                <input class="d1" id="c1" placeholder="Flag">
+            </form>
+        </div>
+        <!--<div id="overlay">
+            <p id="text">decrypt 5A4739756458513D</p>
+            <form action="badAnswer">
+                <input class="d1" id="c1" placeholder="Flag">
+            </form>
+        </div>
+        <div id="overlay2" style="display:none">
+            <p id="text">how many bits are in 4096 Bytes?</p>
+            <form action="gudAnswer">
+                <input class="d2" id="c2" placeholder="Flag">
+            </form>
+        </div>
+        <div id="overlay3" style="display:none">
+            <p id="text">check out http://db6735a5.ngrok.io/challenge </p>
+            <form action="lmaoAnswer">
+                <input class="d3" id="c3" placeholder="Flag">
+            </form>
+        </div>
+        <div id="overlay4" style="display:none">
+            <p id="text">what is the hex value of an RGB white pixel</p>
+            <form action="lolAnswer">
+                <input class="d4" id="c4" placeholder="Flag">
+            </form>
+        </div>-->
+             
+    </body>
+</html>

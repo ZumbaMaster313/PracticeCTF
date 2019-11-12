@@ -30,7 +30,7 @@
         padding-top: 20px;
         padding-left: 20px;
     }
-    button{
+    input[type=submit]{
         background-color: white;
         color: #141414;
         border-radius: 5px;
@@ -46,7 +46,7 @@
         font-family: 'Roboto Mono', monospace;
         transition: transform .1s ease; 
     }
-    #overlay {
+    #overlay, #overlay2, #overlay3, #overlay4{
         position: fixed;
         width: 100%;
         height: 100%;
@@ -58,42 +58,7 @@
         z-index: 2;
         text-align: center;
     }
-    #overlay2 {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 2;
-        text-align: center;
-    }
-    #overlay3 {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 2;
-        text-align: center;
-    }
-    #overlay4 {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        z-index: 2;
-        text-align: center;
-    }
+
     input{
         margin-top: 20px;
         color: black;
@@ -106,7 +71,7 @@
         font-size: 50px;
         color: white;    
         }
-    button:hover{
+    input[type=submit]:hover{
         -webkit-transform: scale(1.015);
         -ms-transform: scale(1.015);
         transform: scale(1.015);
@@ -118,117 +83,63 @@
 
     </style>
     <script>
-        $(document).ready(function() {
-            $('.onClick').click(function() {
-                $("#overlay").css({"display":"block"});
-            });
-            $('#overlay').click(function() {
-                $("#overlay").css({"display":"none"});
-            });
-            $('.onClick2').click(function() {
-                $("#overlay2").css({"display":"block"});
-            });
-            $('#overlay2').click(function() {
-                $("#overlay2").css({"display":"none"});
-            });
-            $('.onClick3').click(function() {
-                $("#overlay3").css({"display":"block"});
-            });
-            $('#overlay3').click(function() {
-                $("#overlay3").css({"display":"none"});
-            });
-            $('.onClick4').click(function() {
-                $("#overlay4").css({"display":"block"});
-            });
-            $('#overlay4').click(function() {
-                $("#overlay4").css({"display":"none"});
-            });
-
-            $('input').click(function() {
-                event.stopPropagation();
-            });
-            $('p').click(function(){
-                event.stopPropagation();
-            });
-
-            $('#c1').keypress(function(event){
-                var keycode = (event.keyCode ? event.keyCode : event.which);
-                if(keycode == '13'){
-                    if ($('#c1').val() == 'donut'){
-                        alert('Correct Flag!');
-                    }
-                    else{
-                        alert('lmao Wrong Flag');
-                    }
-                }
-            });
-            $('#c2').keypress(function(event){
-                var keycode = (event.keyCode ? event.keyCode : event.which);
-                if(keycode == '13'){
-                    if ($('#c2').val() == '32768'){
-                        alert('Correct Flag!');
-                    }
-                    else{
-                        alert('lmao Wrong Flag');
-                    }
-                }
-            });
-            $('#c3').keypress(function(event){
-                var keycode = (event.keyCode ? event.keyCode : event.which);
-                if(keycode == '13'){
-                    if ($('#c3').val() == '178573'){
-                        alert('Correct Flag!');
-                    }
-                    else{
-                        alert('lmao Wrong Flag');
-                    }
-                }
-            });
-            $('#c4').keypress(function(event){
-                var keycode = (event.keyCode ? event.keyCode : event.which);
-                if(keycode == '13'){
-                    if ($('#c4').val() == '#FFFFFF'){
-                        alert('Correct Flag!');
-                    }
-                    else{
-                        alert('lmao Wrong Flag');
-                    }
-                }
-            });
-        });
+        var hello = "{{ hello }}";
+        console.log(hello);
     </script>
     <body>
         <h1>Practice CTF</h1>
         <div id="body">
             <div>
-                <button class="onClick" >challenge 1</button>
+                <form action="/superhardchallenge" method="GET">
+                    <input type="submit" class="onClick4" value="challenge 1">
+                </form>
             </div>
             <div>
-                <button class="onClick2" >challenge 2</button>
+                <form action="/challengebad" method="GET">
+                    <input type="submit" class="onClick4" value="challenge 2">
+                </form>
             </div>
             <div>
-                <button class="onClick3" >challenge 3</button>
+                <form action="/gudChallenge" method="GET">
+                    <input type="submit" class="onClick4" value="challenge 3">
+                </form>
             </div>
             <div>
-                <button class="onClick4" >challenge 4</button>
+                <form action="/badChallenge" method="GET">
+                    <input type="submit" class="onClick4" value="challenge 4">
+                </form>
             </div>
         </div>
-        <div id="overlay" style="display:none">
-            <p id="text">Decrypt 5A4739756458513D</p>
-            <input class="d1" id="c1" placeholder="Flag">
+        <div id="overlay" style="display: none">
+            <p id="text">{{ hello }}</p>
+            <form action="/badAnswer" method="POST">
+                <input class="d1" id="c1" placeholder="Flag">
+            </form>
+        </div>
+        <!--<div id="overlay">
+            <p id="text">decrypt 5A4739756458513D</p>
+            <form action="badAnswer">
+                <input class="d1" id="c1" placeholder="Flag">
+            </form>
         </div>
         <div id="overlay2" style="display:none">
-            <p id="text">How many bits are in 4096 Bytes?</p>
-            <input class="d2" id="c2" placeholder="Flag">
+            <p id="text">how many bits are in 4096 Bytes?</p>
+            <form action="gudAnswer">
+                <input class="d2" id="c2" placeholder="Flag">
+            </form>
         </div>
         <div id="overlay3" style="display:none">
             <p id="text">check out http://db6735a5.ngrok.io/challenge </p>
-            <input class="d3" id="c3" placeholder="Flag">
+            <form action="lmaoAnswer">
+                <input class="d3" id="c3" placeholder="Flag">
+            </form>
         </div>
         <div id="overlay4" style="display:none">
-            <p id="text">What is the hex value of an RGB white pixel</p>
-            <input class="d4" id="c4" placeholder="Flag">
-        </div>
+            <p id="text">what is the hex value of an RGB white pixel</p>
+            <form action="lolAnswer">
+                <input class="d4" id="c4" placeholder="Flag">
+            </form>
+        </div>-->
              
     </body>
 </html>
