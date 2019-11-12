@@ -13,28 +13,58 @@ app.set("views", __dirname+"/views");
 
 app.use(bodyParser.urlencoded({ extended: false })); 
 
+var challenge = "";
+
 router.get('/', function(req, res) {
-  const style = "none"
-  res.render("index", {challenge: "", style: style});
-  });
+  res.render("index", {challenge: "", answer: ""});
+});
+
+router.get('/challenge', function(req, res) {
+  res.sendFile(path.join(__dirname+'/challenge.html'));
+});
 
 router.get('/superhardchallenge', function(req, res){
-  const chal = "decrypt 5A4739756458513D";
-  const style = "block"
-  res.render("index", {challenge: chal, style: style});
+  challenge = "decrypt 5A4739756458513D";
+  res.render("index", {challenge: challenge, answer: ""});
 
 });
 
 router.get('/challengebad', function(req, res){
-  
+  challenge = "how many bits are in 4096 Bytes?";
+  res.render("index", {challenge: challenge, answer: ""});
 });
 
 router.get('/gudChallenge', function(req, res){
-  
+  challenge = "check out http://db6735a5.ngrok.io/challenge";
+  res.render("index", {challenge: challenge, answer: ""});
 });
 
 router.get('/badChallenge', function(req, res){
+  challenge = "what is the hex value of an RGB white pixel";
+  res.render("index", {challenge: challenge, answer: ""});
+});
+
+router.get('/badAnswer', function(req, res){
+  var answer = req.query.answer;
+  var response = ""
   
+  switch(answer.toLowerCase()){
+    case "donut":
+      response = "Correct flag!";
+    break;
+    case "32768":
+      response = "gud, you got the flag";
+    break;
+    case "32":
+      response = "coooorect";;
+    break;
+    case "ffffff":
+      response = "nice job searching that up";
+    break;
+    default:
+      response = "lmao, wrong answer";
+  }
+  res.render("index", {answer: response, challenge: challenge});
 });
 
   

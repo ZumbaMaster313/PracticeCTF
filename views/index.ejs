@@ -83,67 +83,61 @@
 
     </style>
     <script>
-        var style = "<%= style %>";
-        console.log(style);
-
         $(document).ready(function() {
-            $("#overlay").css("display", style);
-        });
+            $('.onClick').click(function() {
+                $("#overlay").css({"display":"block"});
+            });
+            $('.onClick1').click(function() {
+                $("#overlay").css({"display":"block"});
+            });
+            $('.onClick2').click(function() {
+                $("#overlay").css({"display":"block"});
+            });
+            $('.onClick3').click(function() {
+                $("#overlay").css({"display":"block"});
+            });
+            $('#overlay').click(function() {
+                $("#overlay").css({"display":"none"});
+            });
+
+            $('input').click(function() {
+                event.stopPropagation();
+            });
+            $('p').click(function(){
+                event.stopPropagation();
+            });
+        }); 
     </script>
     <body>
         <h1>practice CTF</h1>
         <div id="body">
             <div>
                 <form action="/superhardchallenge" method="GET">
-                    <input type="submit" class="onClick4" value="challenge 1">
+                    <input type="submit" class="onClick" value="challenge 1">
                 </form>
             </div>
             <div>
                 <form action="/challengebad" method="GET">
-                    <input type="submit" class="onClick4" value="challenge 2">
+                    <input type="submit" class="onClick1" value="challenge 2">
                 </form>
             </div>
             <div>
                 <form action="/gudChallenge" method="GET">
-                    <input type="submit" class="onClick4" value="challenge 3">
+                    <input type="submit" class="onClick2" value="challenge 3">
                 </form>
             </div>
             <div>
                 <form action="/badChallenge" method="GET">
-                    <input type="submit" class="onClick4" value="challenge 4">
+                    <input type="submit" class="onClick3" value="challenge 4">
                 </form>
             </div>
         </div>
-        <div id="overlay" style="display: none">
+        <div id="overlay">
             <p id="text"><%= challenge %></p>
-            <form action="/badAnswer" method="POST">
-                <input class="d1" id="c1" placeholder="Flag">
+            <form action="/badAnswer" method="GET">
+                <input name="answer" type="text" class="d1" id="c1" placeholder="Flag">
             </form>
+            <p id="text"><%= answer %></p>
         </div>
-        <!--<div id="overlay">
-            <p id="text">decrypt 5A4739756458513D</p>
-            <form action="badAnswer">
-                <input class="d1" id="c1" placeholder="Flag">
-            </form>
-        </div>
-        <div id="overlay2" style="display:none">
-            <p id="text">how many bits are in 4096 Bytes?</p>
-            <form action="gudAnswer">
-                <input class="d2" id="c2" placeholder="Flag">
-            </form>
-        </div>
-        <div id="overlay3" style="display:none">
-            <p id="text">check out http://db6735a5.ngrok.io/challenge </p>
-            <form action="lmaoAnswer">
-                <input class="d3" id="c3" placeholder="Flag">
-            </form>
-        </div>
-        <div id="overlay4" style="display:none">
-            <p id="text">what is the hex value of an RGB white pixel</p>
-            <form action="lolAnswer">
-                <input class="d4" id="c4" placeholder="Flag">
-            </form>
-        </div>-->
-             
     </body>
 </html>
